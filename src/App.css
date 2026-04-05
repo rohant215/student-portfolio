@@ -1,38 +1,266 @@
-.App {
-  text-align: center;
+/* --- src/App.css --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-main: #09090b;       /* Very dark background */
+  --bg-card: #18181b;       /* Slightly lighter for cards */
+  --bg-hover: #27272a;      /* For interactive elements */
+  --text-main: #fafafa;     /* Off-white for readability */
+  --text-muted: #a1a1aa;    /* Gray for secondary text */
+  --accent: #38bdf8;        /* Professional tech blue */
+  --border: #27272a;        /* Subtle borders */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a:hover {
+  color: var(--accent);
+}
+
+/* --- Layout --- */
+.portfolio-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+/* --- Typography --- */
+.name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  margin: 0 0 0.5rem 0;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0 0 1.5rem 0;
+}
+
+.section {
+  margin-top: 4.5rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+/* --- Header Links --- */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.separator {
+  color: var(--border);
+}
+
+/* --- Tags & Skills --- */
+.skills-container, .tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* This fixes the mashed-together text */
+}
+
+.skill-tag, .tech-tag {
+  background-color: var(--bg-card);
+  color: var(--text-muted);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.skill-tag:hover, .tech-tag:hover {
+  border-color: var(--text-muted);
+  color: var(--text-main);
+}
+
+/* --- Projects --- */
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: #3f3f46;
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.project-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.toggle-btn {
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.toggle-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--text-muted);
+}
+
+/* --- Case Study Details --- */
+.project-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.details-section {
+  margin-bottom: 1.5rem;
+}
+
+.details-section h5 {
+  color: var(--text-main);
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.details-section p, .details-section ul {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.details-section ul {
+  padding-left: 1.2rem;
+}
+
+.details-section li {
+  margin-bottom: 0.4rem;
+}
+
+.image-container {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff; 
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.portfolio-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* --- Experience & Education --- */
+.experience-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 1.75rem;
 }
 
-.App-link {
-  color: #61dafb;
+.experience-item, .education-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.role {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: 'Inter', monospace;
+}
+
+.company {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* --- Footer --- */
+.footer {
+  margin-top: 6rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .experience-header, .project-header {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  .toggle-btn {
+    align-self: flex-start;
   }
 }
